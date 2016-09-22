@@ -9,20 +9,22 @@ import com.googlecode.objectify.annotation.Id;
 @Entity
 public class Post implements Comparable<Post> {
 	@Id Long id;
-	User user;
+	User author;
+	String author_email;
 	String content;
 	Date date;
 	
 	private Post() {}
 	
-	public Post(User user, String content) {
-		this.user = user;
+	public Post(User author, String author_email, String content) {
+		this.author = author;
+		this.author_email = author_email;
 		this.content = content;
 		date = new Date();
 	}
 	
-	public User getUser() {
-		return user;
+	public User getAuthor() {
+		return author;
 	}
 	
 	public String getContent() {

@@ -7,7 +7,7 @@ import javax.servlet.http.*;
 @SuppressWarnings("serial")
 
 public class CronServlet extends HttpServlet {
-private static final Logger _logger = Logger.getLogger(GAEJCronServlet.class.getName());
+private static final Logger _logger = Logger.getLogger(CronServlet.class.getName());
 public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 try {
 _logger.info("Cron Job has been executed");
