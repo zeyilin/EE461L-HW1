@@ -16,7 +16,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	
 	<servlet>
 		<servlet-name>posts</servlet-name>
-		<servlet-class>ee461blog.BlogPosts</servlet-class>
+		<servlet-class>ee461lblog.BlogPostsServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>posts</servlet-name>
@@ -24,13 +24,8 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>post</servlet-name>
-		<servlet-class>ee461blog.Post</servlet-class>
-	</servlet>
-	
-	<servlet>
 		<servlet-name>cron</servlet-name>
-		<servlet-class>ee461blog.CronServlet</servlet-class>
+		<servlet-class>ee461lblog.CronServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>cron</servlet-name>
@@ -38,8 +33,8 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>subscriber</servlet-name>
-		<servlet-class>ee461blog.Subscriber</servlet-class>
+		<servlet-name>subscription</servlet-name>
+		<servlet-class>ee461lblog.SubscriptionServlet</servlet-class>
 	</servlet>
 	
 	<filter>

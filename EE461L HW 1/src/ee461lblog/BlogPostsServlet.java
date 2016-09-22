@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
-public class BlogPosts extends HttpServlet {
+public class BlogPostsServlet extends HttpServlet {
     
 	
 	@Override

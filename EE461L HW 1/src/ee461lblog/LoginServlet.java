@@ -8,8 +8,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 
 public class LoginServlet extends HttpServlet {
 
-    public void doGet(HttpServletRequest req, HttpServletResponse resp)
-              throws IOException {
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
  
