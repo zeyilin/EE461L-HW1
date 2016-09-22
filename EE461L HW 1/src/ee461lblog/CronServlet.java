@@ -1,3 +1,9 @@
+/**
+ * Kassidy Knight and Zeyi Lin
+ * EE461L HW 1
+ * Last updated 9/21/2016
+ */
+
 package ee461lblog;
 
 import java.io.IOException;
