@@ -23,6 +23,7 @@ public class Subscriber {
 	}
 	
 	public Subscriber(User user) {
-		this(user.getUserId(), user.getEmail());
+		this.sub_id = user.getUserId();
+		this.sub_email = user.getEmail();
 	}
 }

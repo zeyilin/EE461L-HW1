@@ -16,17 +16,19 @@ import com.googlecode.objectify.annotation.Id;
 public class Post implements Comparable<Post> {
 	@Id Long id;
 	User author;
+	String title;
 	String author_email;
 	String content;
 	Date date;
 	
 	private Post() {}
 	
-	public Post(User author, String author_email, String content) {
+	public Post(User author, String title, String author_email, String content) {
 		this.author = author;
+		this.title = title;
 		this.author_email = author_email;
 		this.content = content;
-		date = new Date();
+		this.date = new Date();
 	}
 	
 	public User getAuthor() {
