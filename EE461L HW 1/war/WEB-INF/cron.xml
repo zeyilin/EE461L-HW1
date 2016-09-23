@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cronentries>
 	<cron>
-		<url>/cron/gaejcronjob</url>
-		<description>GAEJExperiments Cron Job that simply announces that it got invoked.</description>
-		<schedule>every 2 minutes</schedule>
+		<url>/cron</url>
+		<description>Daily subscriber email.</description>
+        <!-- every day at 5pm central time -->
+        <schedule>every day 17:00</schedule>
+        <timezone>America/Chicago</timezone>
 	</cron>
 </cronentries>

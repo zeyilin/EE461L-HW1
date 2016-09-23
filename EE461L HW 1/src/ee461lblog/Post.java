@@ -39,6 +39,10 @@ public class Post implements Comparable<Post> {
 		return content;
 	}
 	
+	public Date getDate() {
+		return date;
+	}
+	
 	@Override
 	public int compareTo(Post other) {
 		if (date.after(other.date)) {
