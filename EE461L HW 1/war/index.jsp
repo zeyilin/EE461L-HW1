@@ -1,4 +1,4 @@
-<!-- 
+<!--
 Kassidy Knight and Zeyi Lin
 EE461L HW 1
 Last updated 9/23/2016
@@ -142,15 +142,19 @@ Last updated 9/23/2016
 			    <hr>
 			 </div>
  		<% }
- 		} %>     	
-      	
+ 		} %>
+
       	<hr>
 	    <!-- Pager -->
-		<ul class="pager">
-		    <li class="next">
-		        <a href="homepage.jsp">See All Posts &rarr;</a>
-		    </li>
-		</ul>
+	    <% if(recentPosts.getAllPosts().size() > 5){
+	    	%>
+			<ul class="pager">
+			    <li class="next">
+			        <a href="homepage.jsp">See All Posts &rarr;</a>
+			    </li>
+			</ul>
+		<% }
+		%>
 		</div>
     </div>
 
