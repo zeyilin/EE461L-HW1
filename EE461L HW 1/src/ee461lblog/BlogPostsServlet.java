@@ -49,7 +49,7 @@ public class BlogPostsServlet extends HttpServlet {
 		    	Post post = new Post(user, title, author_email, content);
 		    	ofy().save().entities(post).now();
 		    	resp.getWriter().println("Post saved!");
-		    	resp.sendRedirect("/posts?id=" + post.id);
+		    	resp.sendRedirect("index.jsp");
 		    }
 		    resp.sendRedirect("/index.jsp");
 		} catch (Exception e) {

@@ -101,17 +101,4 @@ Last updated 9/23/2016
 			</div>
 		</div>
 	</div>
-	
-	<%
-  		ObjectifyService.register(Subscriber.class);
-		SubscriptionServlet subs = new SubscriptionServlet();
-		List<Subscriber> sublist = subs.getSubscription();
-		for (Subscriber sub : sublist) {
-			pageContext.setAttribute("email", sub.getEmail());
-			%>
-			<p>${fn:escapeXml(email)}</p>
-			<br>
-			<%
-		} %>
-	
 </div>

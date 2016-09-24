@@ -16,6 +16,10 @@ Last updated 9/23/2016
 <%@ page import="com.google.appengine.api.users.UserService"%>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page import = "java.util.Date"%>
+<%@ page import = "java.util.Properties" %>
+<%@ page import = "java.util.TimeZone" %>
+<%@ page import = "java.text.SimpleDateFormat" %>
 
 <html>
 <head>
@@ -120,7 +124,12 @@ Last updated 9/23/2016
  				pageContext.setAttribute("title", post.getTitle());
  				pageContext.setAttribute("content", post.getContent());
  				pageContext.setAttribute("author", post.getAuthor());
- 				pageContext.setAttribute("date", post.getDate().toString());
+ 	            String DATE_FORMAT = "yyyy.MM.dd 'at' HH:mm:ss z";
+ 	            SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
+ 	            sdf.setTimeZone(TimeZone.getTimeZone("CST"));
+ 	            Date date = post.getDate();
+ 	           	sdf.format(date);
+ 				pageContext.setAttribute("date", date.toString());
  			%>
 			<div class="post-preview">
 			    <h2 class="post-title">
