@@ -46,7 +46,6 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="index.jsp">Home</a></li>
-                    <li><a href="login">Login</a></li>
                     <li> <a href="subscribe.jsp">Subscribe</a></li>
                     <li><a href="newpost.jsp">New Post</a></li>
                 </ul>
@@ -71,8 +70,6 @@
             </div>
         </div>
     </header>
-
-<<<<<<< Updated upstream
 <%
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
@@ -83,7 +80,7 @@
     <div class="row">
 		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 			<div class="post-preview">
-				<h3>Hello, ${fn:escapeXml(user.nickname)}! (You can also <u><a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a></u>.)
+				<h3>Hello, ${fn:escapeXml(user.nickname)}! (Click here to <u><a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a></u>.)
 				</h3>			
 				<hr>
 			    <form action="/post" method="POST">
@@ -109,7 +106,7 @@
 		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 		    <div class="post-preview">
 				<h3>Hello!
-				<u><a href="<%= userService.createLoginURL(request.getRequestURI()) %>">You must sign in</a></u> to include your name with your blog posts.
+				<u><a href="<%= userService.createLoginURL(request.getRequestURI()) %>">You must sign in</a></u> to write a new blog post.
 				</h3>
 			</div>
 		</div>
@@ -130,17 +127,3 @@
 
 	<!-- Theme JavaScript -->
 	<script src="clean_blog/js/clean-blog.min.js"></script>
-</body>
-=======
-    <form action="/posts" method="post">
-      Post Title
-      <div><textarea name="title" rows = "1" cols = "60"></textarea></div>
-      <br>
-      Post Content
-      <div><textarea name="content" rows="3" cols="60"></textarea></div>
-      <div><input type="submit" value="Submit New Post" /></div>
-      <input type="hidden" name="guestbookName" value="${fn:escapeXml(guestbookName)}"/>
-    </form>
-  </body>
->>>>>>> Stashed changes
-</html>
