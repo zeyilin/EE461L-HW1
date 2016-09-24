@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class BlogPostsServlet extends HttpServlet {
     
@@ -58,18 +59,19 @@ public class BlogPostsServlet extends HttpServlet {
 	
 	// Retrieve entire post list - for show all
 	public List<Post> getAllPosts() {
-		return ofy().load().type(Post.class).list();
+		List<Post> results = ofy().load().type(Post.class).list();
+		Collections.sort(results);
+		return results;
 	}
 	
 	// Retrieve 5 latest posts - to display on homepage
 	public List<Post> getFivePosts() {
 		List<Post> results = new ArrayList<Post>();
-		if (this.getAllPosts().size() >= 5) {
-			int index = this.getAllPosts().size() - 1;
-			return this.getAllPosts().subList(index - 5, index);
-		} else {
-			return results;
+		List<Post> all = this.getAllPosts();
+		for (int i = 0; i < all.size() && i < 5; i++) {
+			results.add(all.get(all.size() - 1 - i));
 		}
+		return results;
 	}
 	
 	// Retrieve updated posts in the last 24 hours - to email

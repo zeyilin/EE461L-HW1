@@ -22,6 +22,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>post</servlet-name>
 		<url-pattern>/post</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>subscribe</servlet-name>
+		<servlet-class>ee461lblog.SubscriptionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>subscribe</servlet-name>
+		<url-pattern>/subscribe</url-pattern>
+	</servlet-mapping>
 
 	<servlet>
 		<servlet-name>cron</servlet-name>
@@ -42,10 +51,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
         </auth-constraint>
     </security-constraint>
 
-	<servlet>
-		<servlet-name>subscription</servlet-name>
-		<servlet-class>ee461lblog.SubscriptionServlet</servlet-class>
-	</servlet>
+
 
 	<filter>
         <filter-name>ObjectifyFilter</filter-name>

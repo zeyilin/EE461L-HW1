@@ -121,5 +121,17 @@ Last updated 9/23/2016
 <%
     }
 %>
-  </body>
+	<!-- jQuery -->
+	<script src="clean_blog/vendor/jquery/jquery.min.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+
+	<!-- Contact Form JavaScript -->
+	<script src="clean_blog/js/jqBootstrapValidation.js"></script>
+	<script src="clean_blog/js/contact_me.js"></script>
+
+	<!-- Theme JavaScript -->
+	<script src="clean_blog/js/clean-blog.min.js"></script>
+</body>
 </html>

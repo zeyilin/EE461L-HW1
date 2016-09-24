@@ -84,3 +84,22 @@ Last updated 9/23/2016
 			</div>
 		</div>
 	</header>
+	
+	<div class="container">
+    <div class="row">
+		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			<div class="post-preview">
+				<h3>Subscribe to our newsletter! Get the latest posts from the past 24 hours. Or feel free to unsubscribe.</h3>			
+			    <form action="/sub" method="POST">
+					<div><h4 class="post-title">Email Address</h4></div>
+					<div><textarea name="email" rows = "1" cols = "60"></textarea></div>
+					<br>
+					<div><input type="submit" value="Subscribe" /></div>
+					<br>
+					<div><input type="submit" value="Unsubscribe" /></div>
+					<br>
+			    </form>
+			</div>
+		</div>
+	</div>
+</div>
