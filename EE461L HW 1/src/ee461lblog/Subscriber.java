@@ -12,12 +12,17 @@ import com.googlecode.objectify.annotation.Id;
 
 @Entity
 public class Subscriber{
-	@Id Long sub_id;
+	@Id String sub_id;
 	public String sub_email;
 	
 	private Subscriber() {}
 	
 	public Subscriber(String sub_email) {
+		this.sub_id = sub_email;
 		this.sub_email = sub_email;
+	}
+	
+	public String getEmail() {
+		return sub_email;
 	}
 }

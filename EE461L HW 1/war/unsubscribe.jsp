@@ -89,29 +89,14 @@ Last updated 9/23/2016
     <div class="row">
 		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 			<div class="post-preview">
-				<h3>Subscribe to our newsletter! Get the latest posts from the past 24 hours.</h3>			
-			    <form action="/subscribe" method="POST">
-					<div><h4 class="post-title">Email Address</h4></div>
-					<div><textarea name="email" rows = "1" cols = "60"></textarea></div>
-					<br>
-					<div><input type="submit" value="Subscribe" /></div>
-			    </form>
+				<h3>We're sorry to see you go! :(</h3>			
+				   <form action="/unsubscribe" method="POST">
+						<div><h4 class="post-title">Email Address</h4></div>
+						<div><textarea name="unsub_email" rows = "1" cols = "60"></textarea></div>
+						<br>
+						<div><input type="submit" value="Unsubscribe" /></div>
+				   </form>
 			    <br>
-			   	<h3>...or feel free to <u><a href="unsubscribe.jsp">unsubscribe</a></u>.</h3>
 			</div>
 		</div>
 	</div>
-	
-	<%
-  		ObjectifyService.register(Subscriber.class);
-		SubscriptionServlet subs = new SubscriptionServlet();
-		List<Subscriber> sublist = subs.getSubscription();
-		for (Subscriber sub : sublist) {
-			pageContext.setAttribute("email", sub.getEmail());
-			%>
-			<p>${fn:escapeXml(email)}</p>
-			<br>
-			<%
-		} %>
-	
-</div>

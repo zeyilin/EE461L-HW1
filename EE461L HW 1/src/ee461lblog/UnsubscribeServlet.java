@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @SuppressWarnings("serial")
-public class SubscriptionServlet extends HttpServlet {	
+public class UnsubscribeServlet extends HttpServlet {	
 	// Add a subscriber
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -26,9 +26,9 @@ public class SubscriptionServlet extends HttpServlet {
         User user = userService.getCurrentUser();
         
 	    try {
-	        if (req.getParameter("email") != null) {
-	            String email = req.getParameter("email");
-	        	ofy().save().entity(new Subscriber(email)).now();
+	        if (req.getParameter("unsub_email") != null) {
+	            String unsub_email = req.getParameter("unsub_email");
+	        	ofy().delete().type(Subscriber.class).id(unsub_email);
 	        } else {
 	        	resp.sendError(400, "You didn't specify an email!");
 	        	return;
@@ -38,10 +38,5 @@ public class SubscriptionServlet extends HttpServlet {
 				resp.sendError(400, "Something went wrong. Try again!");
 				return;
 		}
-	}
-	
-	// Retrieve subscriber list
-	public List<Subscriber> getSubscription() {
-		return ofy().load().type(Subscriber.class).list();
 	}
 }
