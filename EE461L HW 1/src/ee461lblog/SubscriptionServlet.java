@@ -25,23 +25,15 @@ public class SubscriptionServlet extends HttpServlet {
 		UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
         
-        if(user == null) {
-        	resp.sendError(401, "You are not logged in.");
-        } else {
-        	ofy().save().entity(new Subscriber(user)).now();
-        }
-	}
-	
-	// Unsubscribe
-	@Override
-	public void doDelete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		UserService userService = UserServiceFactory.getUserService();
-        User user = userService.getCurrentUser();
+        String email = req.getParameter("email");
+        String unsub_email = req.getParameter("unsub_email");
         
-        if(user == null) {
-        	resp.sendError(401, "You are not logged in.");
-        } else {
-        	ofy().delete().entity(new Subscriber(user)).now();
+        if(email == null || unsub_email == null) {
+        	resp.sendError(401, "You did not enter an email address");
+        } else if (email != null){
+        	ofy().save().entity(new Subscriber(email)).now();
+        } else if (unsub_email != null){
+        	ofy().delete().entity(new Subscriber(email)).now();
         }
 	}
 	

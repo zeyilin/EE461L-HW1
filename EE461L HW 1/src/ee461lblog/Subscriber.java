@@ -11,19 +11,13 @@ import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 
 @Entity
-public class Subscriber implements Comparable<Subscriber>{
-	@Id public String sub_id;
+public class Subscriber{
+	@Id Long sub_id;
 	public String sub_email;
 	
 	private Subscriber() {}
 	
 	public Subscriber(String sub_email) {
-		this.sub_id = sub_id;
 		this.sub_email = sub_email;
-	}
-	
-	public Subscriber(User user) {
-		this.sub_id = user.getUserId();
-		this.sub_email = user.getEmail();
 	}
 }
