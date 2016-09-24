@@ -1,21 +1,16 @@
-<!-- 
-Kassidy Knight and Zeyi Lin
-EE461L HW 1
-Last updated 9/23/2016
--->
-
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@ page import="ee461lblog.Post"%>
-<%@ page import="ee461lblog.BlogPostsServlet"%>
-<%@ page import="ee461lblog.Subscriber"%>
-<%@ page import="ee461lblog.SubscriptionServlet"%>
-<%@ page import="java.util.List"%>
-<%@ page import="java.util.Collections"%>
-<%@ page import="com.googlecode.objectify.*"%>
-<%@ page import="com.google.appengine.api.users.User"%>
-<%@ page import="com.google.appengine.api.users.UserService"%>
-<%@ page import="com.google.appengine.api.users.UserServiceFactory"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.google.appengine.api.users.User" %>
+<%@ page import="com.google.appengine.api.users.UserService" %>
+<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
+<%@ page import="com.google.appengine.api.datastore.DatastoreServiceFactory" %>
+<%@ page import="com.google.appengine.api.datastore.DatastoreService" %>
+<%@ page import="com.google.appengine.api.datastore.Query" %>
+<%@ page import="com.google.appengine.api.datastore.Entity" %>
+<%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
+<%@ page import="com.google.appengine.api.datastore.Key" %>
+<%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <html>
   <head>
@@ -51,6 +46,7 @@ Last updated 9/23/2016
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="index.jsp">Home</a></li>
+                    <li><a href="login">Login</a></li>
                     <li> <a href="subscribe.jsp">Subscribe</a></li>
                     <li><a href="newpost.jsp">New Post</a></li>
                 </ul>
@@ -76,6 +72,7 @@ Last updated 9/23/2016
         </div>
     </header>
 
+<<<<<<< Updated upstream
 <%
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
@@ -134,4 +131,16 @@ Last updated 9/23/2016
 	<!-- Theme JavaScript -->
 	<script src="clean_blog/js/clean-blog.min.js"></script>
 </body>
+=======
+    <form action="/posts" method="post">
+      Post Title
+      <div><textarea name="title" rows = "1" cols = "60"></textarea></div>
+      <br>
+      Post Content
+      <div><textarea name="content" rows="3" cols="60"></textarea></div>
+      <div><input type="submit" value="Submit New Post" /></div>
+      <input type="hidden" name="guestbookName" value="${fn:escapeXml(guestbookName)}"/>
+    </form>
+  </body>
+>>>>>>> Stashed changes
 </html>
