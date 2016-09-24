@@ -46,8 +46,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="index.jsp">Home</a></li>
-                    <li><a href="login">Login</a></li>
-                    <li> <a href="subscribe.html">Subscribe</a></li>
+                    <li> <a href="subscribe.jsp">Subscribe</a></li>
                     <li><a href="newpost.jsp">New Post</a></li>
                 </ul>
             </div>

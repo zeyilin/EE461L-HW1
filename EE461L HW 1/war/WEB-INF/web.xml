@@ -15,12 +15,12 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 
 	<servlet>
-		<servlet-name>posts</servlet-name>
+		<servlet-name>post</servlet-name>
 		<servlet-class>ee461lblog.BlogPostsServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>posts</servlet-name>
-		<url-pattern>/posts/*</url-pattern>
+		<servlet-name>post</servlet-name>
+		<url-pattern>/post</url-pattern>
 	</servlet-mapping>
 
 	<servlet>

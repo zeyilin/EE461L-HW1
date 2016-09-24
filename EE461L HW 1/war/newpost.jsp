@@ -1,16 +1,21 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.util.List" %>
-<%@ page import="com.google.appengine.api.users.User" %>
-<%@ page import="com.google.appengine.api.users.UserService" %>
-<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
-<%@ page import="com.google.appengine.api.datastore.DatastoreServiceFactory" %>
-<%@ page import="com.google.appengine.api.datastore.DatastoreService" %>
-<%@ page import="com.google.appengine.api.datastore.Query" %>
-<%@ page import="com.google.appengine.api.datastore.Entity" %>
-<%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
-<%@ page import="com.google.appengine.api.datastore.Key" %>
-<%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<!-- 
+Kassidy Knight and Zeyi Lin
+EE461L HW 1
+Last updated 9/23/2016
+-->
+
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page import="ee461lblog.Post"%>
+<%@ page import="ee461lblog.BlogPostsServlet"%>
+<%@ page import="ee461lblog.Subscriber"%>
+<%@ page import="ee461lblog.SubscriptionServlet"%>
+<%@ page import="java.util.List"%>
+<%@ page import="java.util.Collections"%>
+<%@ page import="com.googlecode.objectify.*"%>
+<%@ page import="com.google.appengine.api.users.User"%>
+<%@ page import="com.google.appengine.api.users.UserService"%>
+<%@ page import="com.google.appengine.api.users.UserServiceFactory"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <html>
   <head>
@@ -46,8 +51,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="index.jsp">Home</a></li>
-                    <li><a href="login">Login</a></li>
-                    <li> <a href="subscribe.html">Subscribe</a></li>
+                    <li> <a href="subscribe.jsp">Subscribe</a></li>
                     <li><a href="newpost.jsp">New Post</a></li>
                 </ul>
             </div>
@@ -72,14 +76,50 @@
         </div>
     </header>
 
-    <form action="/posts" method="post">
-      Post Title
-      <div><textarea name="title" rows = "1" cols = "60"></textarea></div>
-      <br>
-      Post Content
-      <div><textarea name="content" rows="3" cols="60"></textarea></div>
-      <div><input type="submit" value="Submit New Post" /></div>
-      <input type="hidden" name="guestbookName" value="${fn:escapeXml(guestbookName)}"/>
-    </form>
+<%
+    UserService userService = UserServiceFactory.getUserService();
+    User user = userService.getCurrentUser();
+    if (user != null) {
+      pageContext.setAttribute("user", user);
+%>
+<div class="container">
+    <div class="row">
+		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			<div class="post-preview">
+				<h3>Hello, ${fn:escapeXml(user.nickname)}! (You can also <u><a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a></u>.)
+				</h3>			
+				<hr>
+			    <form action="/post" method="POST">
+			      <div><h4 class="post-title">Post Title</h4></div>
+			      <div><textarea name="title" rows = "1" cols = "60"></textarea></div>
+			      <br>
+			      <h4 class="post-title">Post Content</h4>
+			      <div><textarea name="content" rows="12" cols="60"></textarea></div>
+			      <br>
+			      <div><input type="submit" value="Submit New Post" /></div>
+			      <br>
+			    </form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<%
+    } else {
+%>
+<div class="container">
+    <div class="row">
+		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+		    <div class="post-preview">
+				<h3>Hello!
+				<u><a href="<%= userService.createLoginURL(request.getRequestURI()) %>">You must sign in</a></u> to include your name with your blog posts.
+				</h3>
+			</div>
+		</div>
+	</div>
+</div>
+<%
+    }
+%>
   </body>
 </html>

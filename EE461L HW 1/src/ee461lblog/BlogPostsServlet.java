@@ -63,8 +63,13 @@ public class BlogPostsServlet extends HttpServlet {
 	
 	// Retrieve 5 latest posts - to display on homepage
 	public List<Post> getFivePosts() {
-		int index = this.getAllPosts().size() - 1;
-		return this.getAllPosts().subList(index - 5, index);
+		List<Post> results = new ArrayList<Post>();
+		if (this.getAllPosts().size() >= 5) {
+			int index = this.getAllPosts().size() - 1;
+			return this.getAllPosts().subList(index - 5, index);
+		} else {
+			return results;
+		}
 	}
 	
 	// Retrieve updated posts in the last 24 hours - to email
