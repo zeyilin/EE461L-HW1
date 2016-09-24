@@ -1,21 +1,16 @@
-<!-- 
-Kassidy Knight and Zeyi Lin
-EE461L HW 1
-Last updated 9/23/2016
--->
-
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@ page import="ee461lblog.Post"%>
-<%@ page import="ee461lblog.BlogPostsServlet"%>
-<%@ page import="ee461lblog.Subscriber"%>
-<%@ page import="ee461lblog.SubscriptionServlet"%>
-<%@ page import="java.util.List"%>
-<%@ page import="java.util.Collections"%>
-<%@ page import="com.googlecode.objectify.*"%>
-<%@ page import="com.google.appengine.api.users.User"%>
-<%@ page import="com.google.appengine.api.users.UserService"%>
-<%@ page import="com.google.appengine.api.users.UserServiceFactory"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.google.appengine.api.users.User" %>
+<%@ page import="com.google.appengine.api.users.UserService" %>
+<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
+<%@ page import="com.google.appengine.api.datastore.DatastoreServiceFactory" %>
+<%@ page import="com.google.appengine.api.datastore.DatastoreService" %>
+<%@ page import="com.google.appengine.api.datastore.Query" %>
+<%@ page import="com.google.appengine.api.datastore.Entity" %>
+<%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
+<%@ page import="com.google.appengine.api.datastore.Key" %>
+<%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <html>
   <head>
@@ -75,7 +70,6 @@ Last updated 9/23/2016
             </div>
         </div>
     </header>
-
 <%
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
@@ -86,7 +80,7 @@ Last updated 9/23/2016
     <div class="row">
 		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 			<div class="post-preview">
-				<h3>Hello, ${fn:escapeXml(user.nickname)}! (You can also <u><a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a></u>.)
+				<h3>Hello, ${fn:escapeXml(user.nickname)}! (Click here to <u><a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a></u>.)
 				</h3>			
 				<hr>
 			    <form action="/post" method="POST">
@@ -112,7 +106,7 @@ Last updated 9/23/2016
 		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 		    <div class="post-preview">
 				<h3>Hello!
-				<u><a href="<%= userService.createLoginURL(request.getRequestURI()) %>">You must sign in</a></u> to include your name with your blog posts.
+				<u><a href="<%= userService.createLoginURL(request.getRequestURI()) %>">You must sign in</a></u> to write a new blog post.
 				</h3>
 			</div>
 		</div>
@@ -133,5 +127,3 @@ Last updated 9/23/2016
 
 	<!-- Theme JavaScript -->
 	<script src="clean_blog/js/clean-blog.min.js"></script>
-</body>
-</html>

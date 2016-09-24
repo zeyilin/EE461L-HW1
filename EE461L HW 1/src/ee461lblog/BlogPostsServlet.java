@@ -37,14 +37,14 @@ public class BlogPostsServlet extends HttpServlet {
 		    String author_email = user.getEmail();
 		    String content = req.getParameter("content");
 		    
-		    if (user == null) {
-		    	// if user is not logged in, cannot post
-		    } else if (req.getParameter("title") == null || req.getParameter("title").isEmpty()) {
+		    if (req.getParameter("title").isEmpty()) {
 		    	// check for empty title
 		    	resp.sendError(400, "No Title");
-		    } else if (req.getParameter("content") == null || req.getParameter("content").isEmpty()) {
+		    	return;
+		    } else if (req.getParameter("content").isEmpty()) {
 		    	// checks for empty content
 		    	resp.sendError(400, "No Content");
+		    	return;
 		    } else {
 		    	Post post = new Post(user, title, author_email, content);
 		    	ofy().save().entities(post).now();
