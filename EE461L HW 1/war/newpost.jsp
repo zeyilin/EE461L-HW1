@@ -91,8 +91,8 @@
 			      <div><textarea name="content" rows="12" cols="60"></textarea></div>
 			      <br>
 			      <div><input type="submit" value="Submit New Post" /></div>
-			      <br>
 			    </form>
+			    <input type ="button" name="cancel" value="Cancel" onClick="location.href = 'index.jsp';"> 
 			</div>
 		</div>
 	</div>
