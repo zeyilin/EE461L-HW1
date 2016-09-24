@@ -137,11 +137,15 @@ Last updated 9/23/2016
       	
       	<hr>
 	    <!-- Pager -->
-		<ul class="pager">
-		    <li class="next">
-		        <a href="homepage.jsp">See All Posts &rarr;</a>
-		    </li>
-		</ul>
+	    <% if(recentPosts.getAllPosts().size() > 5){
+	    	%>
+			<ul class="pager">
+			    <li class="next">
+			        <a href="homepage.jsp">See All Posts &rarr;</a>
+			    </li>
+			</ul>
+		<% } 
+		%>
 		</div>
     </div>
 
